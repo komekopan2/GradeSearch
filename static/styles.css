@@ -1,0 +1,474 @@
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;700&display=swap');
+
+:root {
+    --primary: #0d6efd;
+    --dark: #21252f;
+    --body: #888;
+    --box-shadow: 0 8px 22px rgba(0, 0, 0, 0.2);
+}
+
+/* ローディング画面 */
+#loading {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translateY(-50%) translateX(-50%);
+    -webkit-transform: translateY(-50%) translateX(-50%);
+    width: 100vw;
+    height: 100vh;
+    transition: all 1s;
+    background-color: #0bd;
+}
+
+.loaded {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.spinner {
+    opacity: 1;
+    width: 100px;
+    height: 100px;
+    margin: 200px auto;
+    border: 4px #ddd solid;
+    border-top: 4px #999 solid;
+    background-color: #fff;
+    border-radius: 50%;
+    animation: sp-anime 0.8 infinite linear;
+}
+
+/* ローディングアニメーション */
+@keyframes sk-scaleout {
+    0% {
+        transform: scale(0);
+    }
+    100% {
+        transform: scale(1.0);
+        opacity: 0;
+    }
+}
+
+body {
+    font-family: Sora, "sans-serif";
+    background-color: #fff;
+    color: #212529;
+    font-size: 1rem;
+    font-weight: 400
+    line-height: 1.5;
+    margin: 0;
+    text-align: left;
+}
+
+.container {
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+    text-align: center;
+    width: 90%;
+}
+
+.header {
+    background-color: var(--dark);
+    color: #fff;
+    margin-bottom: 2rem;
+    padding: 2rem 1rem;
+    text-align: center;
+}
+
+.section {
+    padding-bottom: 2.5rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    padding-top: 2.5rem;
+}
+
+.section:hover {
+    background-color: #f5f5f5;
+    transition: color 2s ease-in-out, background-color 0.15s ease-in-out;
+}
+
+h3 {
+    font-family: 'Montserrat', sans-serif;
+
+}
+
+h1 {
+    color: var(--primary);
+    font-weight: 700;
+}
+
+
+button,
+input[type="submit"] {
+    color: #ffffff;
+    background-color: var(--dark);
+    border: 1px solid transparent;
+    border-radius: 0.25rem;
+    font-size: 0.95rem;
+    font-weight: 400;
+    line-height: 1.5;
+    padding: 0.375rem 0.75rem;
+    text-align: center;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    vertical-align: middle;
+}
+
+input[type="text"],
+input[type="number"] {
+    line-height: 1.8;
+    width: 25%;
+}
+
+input[type="text"]:hover,
+input[type="number"]:hover {
+    background-color: #f5f5f5;
+    transition: color 2s ease-in-out, background-color 0.15s ease-in-out;
+}
+
+table {
+    background-color: transparent;
+    margin-bottom: 1rem;
+    width: 100%;
+}
+
+table th,
+table td {
+    padding: 0.75rem;
+    vertical-align: middle;
+}
+
+
+
+
+
+
+
+
+
+
+
+table.price {
+    width: 500px;
+    margin: 0 auto;
+    border-collapse: separate;
+    border-spacing: 1px 0;
+    font-size: 15px;
+}
+
+table.price th,
+table.price td {
+    padding: 10px;
+}
+
+table.price th {
+    box-shadow: 0px 1px 1px rgba(255, 255, 255, 0.8) inset;
+    border-radius: 5px 5px 10px 10px;
+    background: #88b7d5;
+    vertical-align: middle;
+    text-align: center;
+    position: relative;
+    color: #fff;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+    font-size: 24px;
+}
+
+table.price th.c1 {
+    background: rgb(162, 206, 26);
+    /* Old browsers */
+    background: -moz-linear-gradient(top, rgba(97, 174, 36, 1) 1%, rgba(86, 155, 32, 1) 100%);
+    /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(1%, rgba(97, 174, 36, 1)), color-stop(100%, rgba(86, 155, 32, 1)));
+    /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, rgba(97, 174, 36, 1) 1%, rgba(186, 155, 32, 1) 100%);
+    /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, rgba(97, 174, 36, 1) 1%, rgba(86, 155, 32, 1) 100%);
+    /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, rgba(97, 174, 36, 1) 1%, rgba(86, 155, 32, 1) 100%);
+    /* IE10+ */
+    background: linear-gradient(to bottom, rgba(97, 174, 36, 1) 1%, rgba(86, 155, 32, 1) 100%);
+    /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#61ae24', endColorstr='#569b20', GradientType=0);
+    /* IE6-9 */
+}
+
+table.price th.c2 {
+    background: rgb(237, 73, 147);
+    /* Old browsers */
+    background: -moz-linear-gradient(top, rgba(204, 20, 69, 1) 1%, rgba(182, 17, 61, 1) 100%);
+    /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(1%, rgba(204, 20, 69, 1)), color-stop(100%, rgba(182, 17, 61, 1)));
+    /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, rgba(204, 20, 69, 1) 1%, rgba(182, 17, 61, 1) 100%);
+    /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, rgba(204, 20, 69, 1) 1%, rgba(182, 17, 61, 1) 100%);
+    /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, rgba(204, 20, 69, 1) 1%, rgba(182, 17, 61, 1) 100%);
+    /* IE10+ */
+    background: linear-gradient(to bottom, rgba(204, 20, 69, 1) 1%, rgba(255, 0, 111, 1) 100%);
+    /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#cc1445', endColorstr='#b6113d', GradientType=0);
+    /* IE6-9 */
+}
+
+table.price th.c3 {
+    background: rgb(29, 140, 233);
+    /* Old browsers */
+    background: -moz-linear-gradient(top, rgba(17, 63, 140, 1) 1%, rgba(15, 56, 125, 1) 100%);
+    /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(1%, rgba(17, 63, 140, 1)), color-stop(100%, rgba(15, 56, 125, 1)));
+    /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, rgba(17, 63, 140, 1) 1%, rgba(15, 56, 125, 1) 100%);
+    /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, rgba(17, 63, 140, 1) 1%, rgba(15, 56, 125, 1) 100%);
+    /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, rgba(17, 63, 140, 1) 1%, rgba(15, 56, 125, 1) 100%);
+    /* IE10+ */
+    background: linear-gradient(to bottom, rgba(17, 63, 140, 1) 1%, rgba(0, 0, 177, 1) 100%);
+    /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#113f8c', endColorstr='#0f387d', GradientType=0);
+    /* IE6-9 */
+}
+
+table.price th:after {
+    top: 69px;
+    left: 5px;
+    content: "";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+    border: 78px solid transparent;
+}
+
+/* firefox */
+@-moz-document url-prefix() {
+    table.price th {
+        text-indent: 10px;
+    }
+
+    table.price th::after {
+        padding: 0;
+        top: 60px;
+        left: 0;
+        content: "";
+        height: 0;
+        width: 0;
+        position: relative;
+        pointer-events: none;
+        border: 50px solid transparent;
+        border-top: #B7D567 15px solid;
+    }
+}
+
+table.price td {
+    box-shadow: 0px 1px 1px rgba(255, 255, 255, 0.3) inset;
+    text-align: center;
+    padding-top: 15px;
+    border: none;
+    height: 70px;
+}
+
+table.price tr:nth-child(2n+1) td.c1 {
+    background: #f7f9e8;
+}
+
+table.price tr:nth-child(2n+0) td.c1 {
+    background: #e2efbc;
+}
+
+table.price tr:nth-child(2n+1) td.c2 {
+    background: #ffecf5;
+}
+
+table.price tr:nth-child(2n+0) td.c2 {
+    background: #ffdfed;
+}
+
+table.price tr:nth-child(2n+1) td.c3 {
+    background: #fff;
+}
+
+table.price tr:nth-child(2n+0) td.c3 {
+    background: #eee;
+}
+
+table.price tr:last-child td {
+    border-radius: 0 0 5px 5px;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.2);
+}
+
+table.price tr:last-child td button {
+    font-size: 12px;
+    font-family: Arial;
+    font-weight: normal;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    border: 1px solid #ffaa22;
+    padding: 9px 18px;
+    text-decoration: none;
+    background: -moz-linear-gradient(center top, #ffec64 5%, #ffab23 100%);
+    background: -ms-linear-gradient(top, #ffec64 5%, #ffab23 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffec64', endColorstr='#ffab23');
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(5%, #ffec64), color-stop(100%, #ffab23));
+    background-color: #ffec64;
+    color: #333333;
+    display: inline-block;
+    text-shadow: 1px 1px 0px #ffee66;
+    -webkit-box-shadow: inset 1px 1px 0px 0px #fff6af;
+    -moz-box-shadow: inset 1px 1px 0px 0px #fff6af;
+    box-shadow: inset 1px 1px 0px 0px #fff6af;
+}
+
+table.price tr:last-child td button:hover {
+    background: -moz-linear-gradient(center top, #ffab23 5%, #ffec64 100%);
+    background: -ms-linear-gradient(top, #ffab23 5%, #ffec64 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffab23', endColorstr='#ffec64');
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(5%, #ffab23), color-stop(100%, #ffec64));
+    background-color: #ffab23;
+}
+
+table.price tr:last-child td button {
+    position: relative;
+    top: 1px;
+}
+
+
+
+
+
+
+
+/********************************************
+* Now Loading
+********************************************/
+#overlay{
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    width: 100%;
+    height:100%;
+    display: none;
+    background: rgba(0,0,0,0.6);
+}
+.cv-spinner {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}/*
+.spinner {
+    width: 80px;
+    height: 80px;
+    border: 4px #ddd solid;
+    border-top: 4px #999 solid;
+    border-radius: 50%;
+    animation: sp-anime 0.8s infinite linear;
+}*/
+@keyframes sp-anime {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(359deg); }
+}
+.is-hide{
+    display:none;
+}
+*/
+
+
+
+
+
+
+/***　おしゃれテーブル3 シアンカラー　
+.osare3-table {
+    padding-bottom: 2.5rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    padding-top: 2.5rem;
+    width: 100%;
+    border-collapse: separate;
+    border: none;
+    border-spacing: 0px 10px;
+}
+
+.osare3-table tbody td,
+.osare3-table tfoot td {
+    text-align: center;
+}
+
+/* 上部ヘッダー（背景：パステルカラー）
+.osare3-table thead th {
+    color: var(--primary);
+    font-weight: bold;
+    background: #f5f5f5;
+}
+
+/* 上部ヘッダーの丸み
+.osare3-table thead th:nth-child(2) {
+    border-radius: 10px 0 0 0;
+}
+
+.osare3-table thead th:last-child {
+    border-radius: 0 10px 0 0;
+}
+
+.osare3-table th,
+.osare3-table td {
+    border: 0 none !important;
+}
+
+/* １行ずつ色変更　不要なら削除 even:奇数行　odd:偶数行
+.osare3-table tr:nth-child(even) td {
+    background: #f5f5f5;
+}
+
+.osare3-table tr:nth-child(odd) td {
+    background: #FDFDFD;
+}
+
+/* ヘッダーセル先頭・ボディ項目・フッター項目
+.osare3-table tbody th,
+.osare3-table tfoot th,
+.osare3-table thead th:first-child {
+
+    background: none;
+    color: #666;
+    font-weight: bold;
+    line-height: 4.5em;
+    text-align: center;
+}
+
+
+/*（共通）　項目の多いテーブルの幅を調整
+@media (max-width: 767px) {
+
+    .col6t th,
+    .col6t td {
+        font-size: 0.4em;
+        padding: 10px 0px;
+    }
+
+    .col5t th,
+    .col5t td {
+        font-size: 0.5em;
+        padding: 10px 0px;
+    }
+
+    .col4t th,
+    .col4t td {
+        font-size: 0.7em;
+        padding: 10px 5px;
+    }
+
+    .col3t th,
+    .col3t td {
+        font-size: 0.8em;
+        padding: 10px 10px;
+    }
+}
+
+tbody tr:nth-of-type(odd) {
+    background-color: rgb(179, 208, 255, 0.3)
+}*/

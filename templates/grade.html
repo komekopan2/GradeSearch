@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+    <link href="/static/styles.css" rel="stylesheet">
+    <title>Grade Search</title>
+
+</head>
+
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <script>
+        window.onload = function () {
+            const spinner = document.getElementById('loading');
+            spinner.classList.add('loaded');
+        }</script>
+    <!-- ローディング画面 -->
+    <script>
+        function ShowLength(str) {
+            document.getElementById("inputlength").innerHTML = str.length + "文字";
+        }
+    </script>
+    <div id="loading">
+        <div class="spinner"></div>
+    </div>
+    <div class="header">
+        <h1>Grade Search</h1>
+        <h3 class="text-white pt-1"><span class="auto-input"></span></h3>
+    </div>
+    <div class="container">
+        <div class="section">
+
+            <h2>英文に含まれる単語レベルを調べる</h2>
+            <!-- TODO: Create a form for users to submit a name, a month, and a day -->
+            <form action="/grade" method="post">
+                <input name="name" placeholder="300文字以内で英文を入力" type="text" required maxlength="300"
+                    onkeyup="ShowLength(value);">
+                <p id="inputlength">0文字</p>
+                <!--
+                        <input name="month" placeholder="Month" type="number" min="1" max="12">
+                        <input name="day" placeholder="Day" type="number" min="1" max="31">
+                    -->
+                <input type="submit" value="Search">
+
+            </form>
+        </div>
+
+        <div class="section">
+
+            <h2>各学年までに習う英単語の割合</h2>
+            <table class="price">
+                <thead>
+                    <tr>
+                        <th class="c2">学年</th>
+                        <th class="c3">割合</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for cnt3 in range(3) %}
+                    <tr>
+                        <td class="c2">中{{cnt3+1}}</td>
+                        <td class="c3">{{percent[cnt3]}}</td>
+                    </tr>
+                    {% endfor %}
+                    {% for cnt3 in range(3) %}
+                    <tr>
+                        <td class="c2">高{{cnt3+1}}</td>
+                        <td class="c3">{{percent[cnt3+3]}}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+
+
+
+        {% for cnt2 in range(3) %}
+        <div class="section">
+            <h2>中学{{cnt2+1}}年生までに習わない単語</h2>
+            <table class="price">
+                <thead>
+                    <tr>
+                        <th class="c2">英単語</th>
+                        <th class="c3">日本語訳</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for cnt in range((result[cnt2]|length)-1) %}
+                    <tr>
+                        <td class="c2">{{result[cnt2][cnt+1]}}</td>
+                        <td class="c3"><a href="https://ejje.weblio.jp/content/{{result[cnt2][cnt+1]}}" target="_blank"
+                                rel="noopener noreferrer">日本語訳を表示</a></td>
+                    </tr>
+                    {% endfor %}
+
+                </tbody>
+            </table>
+        </div>
+        {% endfor %}
+
+
+
+
+        {% for cnt2 in range(3) %}
+        <div class="section">
+            <h2>高校{{cnt2+1}}年生までに習わない単語</h2>
+            <table class="price">
+                <thead>
+                    <tr>
+                        <th class="c2">英単語</th>
+                        <th class="c3">日本語訳</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for cnt in range((result[cnt2+3]|length)-1) %}
+                    <tr>
+                        <td class="c2">{{result[cnt2+3][cnt+1]}}</td>
+                        <td class="c3"><a href="https://ejje.weblio.jp/content/{{result[cnt2+3][cnt+1]}}" target="_blank"
+                                rel="noopener noreferrer">日本語訳を表示</a></td>
+                    </tr>
+                    {% endfor %}
+
+                </tbody>
+            </table>
+        </div>
+        {% endfor %}
+
+
+        <!-- TODO: Loop through the database entries to display them in this table
+                        {% for birthday in birthdays %}
+                            <tr>
+                                <td>{{birthday.name}}</td>
+                                ???<td>{{birthday}}</td>
+                                <td>{{birthday.month}}/{{birthday.day}}</td>
+                            </tr>
+                        {% endfor %}-->
+    </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+
+    <script>
+        let typed = new Typed(".auto-input", {
+            strings: ["by yotech>>"],
+            typeSpeed: 140,
+            backSpeed: 50,
+            loop: true,
+        });</script>
+</body>
+
+</html>
